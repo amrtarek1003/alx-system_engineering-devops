@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -maxdepth 1 -name "*.html" -type f -exec sh -c 'cp -up "$1" "$(dirname "$0")/."' ../ {} \:
+cp -u *.html ..
