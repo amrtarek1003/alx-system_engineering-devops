@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1Apv | awk '{printf "%s%s", $0, (NR%3 ? ", " : "\n")}'
+ls -xamp
