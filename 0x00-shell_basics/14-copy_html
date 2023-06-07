@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Get the current working directory and its parent directory
+cwd=$(pwd)
+parent_dir=$(dirname "$cwd")
+
+# Loop through all the HTML files in the current working directory
+for filename in "$cwd"/*.html; do
+    # Get the filename without the path
+    filename=$(basename "$filename")
+    # Get the full path of the file in the parent directory
+    dest_file="$parent_dir/$filename"
+    # Only copy the file if it doesn't exist in the parent directory
+    # or if it's newer than the version in the parent directory
+    if [ ! -f "$dest_file" ] || [ "$cwd/$filename" -nt "$dest_file" ]; then
+        cp -p "$cwd/$filename" "$dest_file"
+    fi
+done
